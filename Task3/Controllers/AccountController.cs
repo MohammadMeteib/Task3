@@ -37,8 +37,8 @@ namespace Task3.Controllers
         [HttpPost]
         public IActionResult Login(User user)
         {
-            var data = db.Users.Where(x => x.Password == user.Password && x.Email == user.Email);
-            if (data != null)
+            var data = db.Users.Where(x => x.Password == user.Password && x.Email == user.Email).FirstOrDefault();
+            if (data!=null)
             {
                 return RedirectToAction("LoginHome");
             }
